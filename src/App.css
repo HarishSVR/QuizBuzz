@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.App h2 {
+  color: blue;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
