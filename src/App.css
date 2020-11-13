@@ -4,6 +4,33 @@
 .App h2 {
   color: blue;
 }
+.App h3 {
+  color: rgb(39, 39, 38);
+}
+.options {
+  border: none;
+  outline: none;
+  margin: 5px 5px;
+  padding: 0px 250px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.options:hover {
+  background: rgb(139, 173, 238);
+}
+.btn {
+  border: none;
+  outline: none;
+  background: #888;
+  padding: 10px 30px;
+  font-size: 15px;
+  color: #ddd;
+  cursor: pointer;
+  margin: 20px 20px;
+}
+.btn:hover {
+  background: #111;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -12,6 +39,9 @@
 }
 label {
   width: 150px;
+  display: inline-block;
+}
+.button {
   display: inline-block;
 }
 .App-header {

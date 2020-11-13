@@ -1,15 +1,23 @@
 import React, { useState } from "react";
-import "./quiz.css";
 
 function Quiz() {
-  const questions = [
+  const students = [
     {
-      questionText: "What is the capital of France?",
+      questionText: "Who is CEO of Microsoft?",
       answerOptions: [
-        { answerText: "New York", isCorrect: false },
-        { answerText: "London", isCorrect: false },
-        { answerText: "Paris", isCorrect: true },
-        { answerText: "Dublin", isCorrect: false },
+        { answerText: "Jeff Bezos", isCorrect: false },
+        { answerText: "Elon Musk", isCorrect: false },
+        { answerText: "Bill Gates", isCorrect: true },
+        { answerText: "Tony Stark", isCorrect: false },
+      ],
+    },
+    {
+      questionText: "Who is CEO of Apple?",
+      answerOptions: [
+        { answerText: "Jeff Bezos", isCorrect: false },
+        { answerText: "Elon Musk", isCorrect: false },
+        { answerText: "Bill Gates", isCorrect: false },
+        { answerText: "Tim Cook", isCorrect: true },
       ],
     },
     {
@@ -21,87 +29,58 @@ function Quiz() {
         { answerText: "Tony Stark", isCorrect: false },
       ],
     },
-    {
-      questionText: "The iPhone was created by which company?",
-      answerOptions: [
-        { answerText: "Apple", isCorrect: true },
-        { answerText: "Intel", isCorrect: false },
-        { answerText: "Amazon", isCorrect: false },
-        { answerText: "Microsoft", isCorrect: false },
-      ],
-    },
-    {
-      questionText: "How many Harry Potter books are there?",
-      answerOptions: [
-        { answerText: "1", isCorrect: false },
-        { answerText: "4", isCorrect: false },
-        { answerText: "6", isCorrect: false },
-        { answerText: "7", isCorrect: true },
-      ],
-    },
-    {
-      questionText: "How many Harry Potter books are there?",
-      answerOptions: [
-        { answerText: "1", isCorrect: false },
-        { answerText: "4", isCorrect: false },
-        { answerText: "6", isCorrect: false },
-        { answerText: "7", isCorrect: true },
-      ],
-    },
-    {
-      questionText: "How many Harry Potter books are there?",
-      answerOptions: [
-        { answerText: "1", isCorrect: false },
-        { answerText: "4", isCorrect: false },
-        { answerText: "6", isCorrect: false },
-        { answerText: "7", isCorrect: true },
-      ],
-    },
   ];
+  let i = 0;
+  function prev() {
+    if (i > 0) i--;
+    return students[i];
+  }
+  const next = () => {};
+  function myAnswer() {
+    alert(
+      "Correct Answer : " +
+        students[i].answerOptions.find((option) => option.isCorrect).answerText
+    );
+  }
+  function submit() {
+    alert(
+      "Correct Answer : " +
+        students[i].answerOptions.find((option) => option.isCorrect).answerText
+    );
+  }
 
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [showScore, setShowScore] = useState(false);
-  const [score, setScore] = useState(0);
-
-  const handleAnswerOptionClick = (isCorrect) => {
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
-      setCurrentQuestion(nextQuestion);
-    } else {
-      setShowScore(true);
-    }
-  };
   return (
     <div className="app">
-      {showScore ? (
-        <div className="score-section">
-          You scored {score} out of {questions.length}
-        </div>
-      ) : (
-        <>
-          <div className="question-section">
-            <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
-            </div>
-            <div className="question-text">
-              {questions[currentQuestion].questionText}
-            </div>
-          </div>
-          <div className="answer-section">
-            {questions[currentQuestion].answerOptions.map((answerOption) => (
-              <button
-                onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}
-              >
-                {answerOption.answerText}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+      <h1>{students[i].questionText}</h1>
+      <h2>
+        <input type="radio" value="A" className="options" />
+        {students[i].answerOptions[0].answerText}
+      </h2>
+      <h2>
+        <input type="radio" value="A" className="options" />
+        {students[i].answerOptions[1].answerText}
+      </h2>
+      <h2>
+        <input type="radio" value="A" className="options" />
+        {students[i].answerOptions[2].answerText}
+      </h2>
+      <h2>
+        <input type="radio" value="A" className="options" />
+        {students[i].answerOptions[3].answerText}
+      </h2>
+
+      <button className="btn" onClick={prev}>
+        Previous Question
+      </button>
+      <button className="btn" onClick={submit}>
+        Submit Quiz
+      </button>
+      <button className="btn" onClick={next}>
+        Next Question
+      </button>
+      <button className="btn" onClick={myAnswer}>
+        Show Answer
+      </button>
     </div>
   );
 }
